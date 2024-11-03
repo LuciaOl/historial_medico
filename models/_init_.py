@@ -1,0 +1,2 @@
+#Esta carpeta contiene los modelos que definen la estructura de los documentos para pacientes y registros médicos.
+#Este archivo puede estar vacío, solo sirve para indicar que models es un módulo de Python.
