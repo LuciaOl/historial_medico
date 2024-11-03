@@ -17,6 +17,7 @@ def agregar_registro_medico(ci):
 
     return jsonify({"message": "Registro médico agregado", "id": registro_id}), 201
 
+
 @registro_bp.route('/pacientes/<ci>/registros', methods=['GET'])
 def consultar_historial_medico(ci):
     db_pacientes = current_app.config['DB_PACIENTES']
@@ -25,9 +26,20 @@ def consultar_historial_medico(ci):
     if ci not in db_pacientes:
         return jsonify({"error": "No existe un paciente con la cédula aportada como parámetro"}), 402
 
+    # Parámetros para la paginación
+    page = int(request.args.get('page', 1))  # Página actual
+    limit = int(request.args.get('limit', 10))  # Registros por página
+
+    # Filtra los registros del paciente y ordena por fecha
     historial = [doc for doc in db_registros if db_registros[doc]['paciente_id'] == ci]
     historial.sort(key=lambda x: db_registros[x]['fecha'], reverse=True)
-    return jsonify(historial), 200
+
+    # Paginación
+    start = (page - 1) * limit
+    end = start + limit
+    paginated_historial = historial[start:end]
+
+    return jsonify(paginated_historial), 200
 
 @registro_bp.route('/registros', methods=['GET'])
 def obtener_registros_por_criterio():

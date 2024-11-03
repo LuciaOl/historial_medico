@@ -1,7 +1,7 @@
 import couchdb
 
 def get_couchdb():
-    couch = couchdb.Server('http://127.0.0.1:5984/')
+    couch = couchdb.Server('http://admin:nala2030@127.0.0.1:5984/')
     try:
         db_pacientes = couch.create('pacientes')
         db_registros = couch.create('registros_medicos')
