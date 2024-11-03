@@ -78,16 +78,16 @@ Asegúrate de tener pip instalado y ejecuta:
 ```
 
 ## Plataformas y Lenguajes
-Lenguaje: Python
-Framework: Flask (u otro que estés utilizando)
-Base de Datos: CouchDB
-Plataforma: Compatible con cualquier sistema operativo que soporte Python y CouchDB.
+- **Lenguaje**: Python
+- **Framework**: Flask 
+- **Base de Datos**: CouchDB
+- **Plataforma**: Compatible con cualquier sistema operativo que soporte Python y CouchDB.
 
 ## Justificación de la Base de Datos Elegida
 Se eligió CouchDB como base de datos NoSQL debido a su estructura basada en documentos, que permite un modelo de datos flexible, ideal para aplicaciones donde los datos pueden variar entre registros. Además, CouchDB facilita la escalabilidad y el manejo de grandes volúmenes de datos, lo que es esencial para una aplicación de gestión de historial médico.
-Diseño del Esquema de la Base de Datos
 
-## La base de datos se organiza en las siguientes colecciones:
-Pacientes: Contiene información básica de cada paciente, incluyendo CI, nombre, apellido, fecha de nacimiento y sexo.
-Registros Médicos: Almacena los registros médicos asociados a cada paciente, incluyendo fecha, tipo, diagnóstico, médico, institución, descripción (opcional) y medicación (opcional).
+## Diseño del Esquema de la Base de Datos
+La base de datos se organiza en las siguientes colecciones:
+- **Pacientes**: Contiene información básica de cada paciente, incluyendo CI, nombre, apellido, fecha de nacimiento y sexo.
+- **Registros Médicos**: Almacena los registros médicos asociados a cada paciente, incluyendo fecha, tipo, diagnóstico, médico, institución, descripción (opcional) y medicación (opcional).
 
