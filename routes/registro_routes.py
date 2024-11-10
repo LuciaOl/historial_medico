@@ -31,15 +31,21 @@ def consultar_historial_medico(ci):
     limit = int(request.args.get('limit', 10))  # Registros por página
 
     # Filtra los registros del paciente y ordena por fecha
-    historial = [doc for doc in db_registros if db_registros[doc]['paciente_id'] == ci]
-    historial.sort(key=lambda x: db_registros[x]['fecha'], reverse=True)
+    historial = [db_registros[doc] for doc in db_registros if db_registros[doc]['paciente_id'] == ci]
+    historial.sort(key=lambda x: x['fecha'], reverse=True)
 
     # Paginación
     start = (page - 1) * limit
     end = start + limit
     paginated_historial = historial[start:end]
 
-    return jsonify(paginated_historial), 200
+    # Excluir los campos _id y _rev que son el id del registro y la revision del doc de CouchDB
+    sanitized_historial = [
+        {k: v for k, v in registro.items() if k not in ['_id', '_rev']}
+        for registro in paginated_historial
+    ]
+
+    return jsonify(sanitized_historial), 200
 
 @registro_bp.route('/registros', methods=['GET'])
 def obtener_registros_por_criterio():
@@ -52,4 +58,9 @@ def obtener_registros_por_criterio():
         if all(registro.get(key) == value for key, value in criterios.items()):
             resultados.append(registro)
 
-    return jsonify(resultados), 200
+    # Excluir los campos _id y _rev que son el id del registro y la revision del doc de CouchDB
+    sanitized_historial = [
+        {k: v for k, v in registro.items() if k not in ['_id', '_rev']}
+        for registro in resultados
+    ]
+    return jsonify(sanitized_historial), 200

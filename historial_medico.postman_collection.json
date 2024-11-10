@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "3409b13a-e091-41f2-96fe-8cb1fe77251a",
 		"name": "historial_medico",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "34963967"
 	},
 	"item": [
@@ -20,22 +20,31 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://127.0.0.1:5000/pacientes",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"pacientes"
-					]
-				}
+				"url": "http://127.0.0.1:5000/pacientes"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Agregar un Paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CI\": \"12345678\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Perez\",\n    \"fecha_nacimiento\": \"1990-01-01\",\n    \"sexo\": \"M\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:5000/pacientes"
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Agregar un Registro Médico",
@@ -51,48 +60,74 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://127.0.0.1:5000/pacientes/12345678/registros",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"pacientes",
-						"12345678",
-						"registros"
-					]
-				}
+				"url": "http://127.0.0.1:5000/pacientes/12345678/registros"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Agregar un Registro Médico",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha\": \"2024-11-01\",\n    \"tipo\": \"Consulta\",\n    \"diagnostico\": \"Dolor de cabeza\",\n    \"medico\": \"Dr. Lopez\",\n    \"institucion\": \"Hospital Central\",\n    \"descripcion\": \"Paciente refiere dolor de cabeza desde hace dos días\",\n    \"medicacion\": \"Paracetamol 500mg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:5000/pacientes/12345678/registros"
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Agregar un Registro Médico Copy",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha\": \"2024-11-01\",\n    \"tipo\": \"Consulta\",\n    \"diagnostico\": \"Dolor de cabeza\",\n    \"medico\": \"Dr. Lopez\",\n    \"institucion\": \"Hospital Central\",\n    \"descripcion\": \"Paciente refiere dolor de cabeza desde hace dos días\",\n    \"medicacion\": \"Paracetamol 500mg\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:5000/pacientes/12345678/registros"
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Consultar el Historial Médico",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/pacientes/12345678/registros",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"pacientes",
-						"12345678",
-						"registros"
-					]
-				}
+				"url": "http://127.0.0.1:5000/pacientes/12345678/registros"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Consultar el Historial Médico",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:5000/pacientes/12345678/registros"
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "Obtener Registro por Criterio",
@@ -120,7 +155,39 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Obtener Registro por Criterio",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/registros?tipo=Consulta",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"registros"
+							],
+							"query": [
+								{
+									"key": "tipo",
+									"value": "Consulta"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
 		}
 	]
 }
