@@ -91,3 +91,23 @@ La base de datos se organiza en las siguientes colecciones:
 - **Pacientes**: Contiene información básica de cada paciente, incluyendo CI, nombre, apellido, fecha de nacimiento y sexo.
 - **Registros Médicos**: Almacena los registros médicos asociados a cada paciente, incluyendo fecha, tipo, diagnóstico, médico, institución, descripción (opcional) y medicación (opcional).
 
+
+
+## Paso 4: Construir y Ejecutar la Solución con Docker
+
+Abre una terminal en la carpeta del proyecto donde están el Dockerfile y docker-compose.yml.
+
+_Tomar en cuenta que se debe tener instalado y levantado docker_
+
+Construye y ejecuta los contenedores:
+```bash
+docker-compose up --build
+```
+Esto descargará las imágenes necesarias, construirá la imagen de tu aplicación y lanzará los contenedores. Verás los logs de la aplicación y CouchDB en la terminal.
+
+Prueba la Aplicación: Accede a http://127.0.0.1:5000 para probar la API. CouchDB estará disponible en http://127.0.0.1:5984/_utils.
+
+Apagar los contenedores: Cuando termines, puedes apagar los contenedores presionando CTRL+C en la terminal o ejecutando:
+```bash
+docker-compose down
+```

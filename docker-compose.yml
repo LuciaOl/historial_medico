@@ -1,0 +1,26 @@
+
+#Definimos dos servicios: couchdb y app.
+#La base de datos couchdb se configura con un usuario admin y una contraseña password.
+#La aplicación Flask (app) se conecta a CouchDB utilizando las credenciales.
+
+version: '3.8'
+
+services:
+  couchdb:
+    image: couchdb:3.2
+    container_name: couchdb
+    ports:
+      - "15984:5984"
+    environment:
+      - COUCHDB_USER=user
+      - COUCHDB_PASSWORD=password
+
+  app:
+    build: .
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    environment:
+      - COUCHDB_URL=http://user:password@couchdb:5984
+    depends_on:
+      - couchdb
